@@ -1,0 +1,43 @@
+---
+name: pixelserv-tls
+version: 1.0.0
+slug: pixelserv-tls
+description: A lightweight TLS proxy server optimized for serving pixel GIFs
+url: https://github.com/Bluscream/home-assistant-addons/tree/master/pixelserv-tls
+audio: false
+arch:
+  - armv7
+hassio_api: true
+auth_api: true
+ingress: true
+host_network: true
+host_dbus: true
+ingress_stream: true
+ingress_port: 0
+ingress_entry: "#/./"
+# panel_icon: mdi:emoticon-devil-outline
+# panel_title: pixelserv-tls
+init: false
+map:
+  - ssl
+ports:
+  80/tcp: null
+  443/tcp: null
+ports_description:
+  80/tcp: HTTP
+  443/tcp: HTTPS
+options:
+  ssl: true
+  log_level: warning
+  certfile: fullchain.pem
+  keyfile: privkey.pem
+schema:
+  log_level: list(debug|info|warning)?
+  certfile: str
+  keyfile: str
+  ssl: bool
+  # leave_front_door_open: bool?
+# image: "ghcr.io/yeonv/{arch}-addon-ledfx"
+requirements:
+  - architecture: armhf
+    url: Dockerfiles/Dockerfile.armhf
