@@ -1,0 +1,6 @@
+---
+version: '1'
+changes:
+  - version: 1.0.0
+    title: Initial release
+    description: First release of pixelserv-tls add-on

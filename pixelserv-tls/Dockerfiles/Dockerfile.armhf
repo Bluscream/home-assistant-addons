@@ -1,0 +1,26 @@
+FROM debian:buster-slim-armhf
+
+ENV HTTP_PORT=80
+ENV HTTPS_PORT=443
+ENV CERT_DIR=/ssl
+
+WORKDIR /app
+
+RUN apt-get update && \
+    apt-get install -y \
+        wget \
+        ca-certificates \
+        libssl-dev \
+        openssl \
+    && rm -rf /var/lib/apt/lists/*
+
+RUN wget https://github.com/kvic-z/pixelserv-tls/releases/download/latest/pixelserv-tls-armhf && \
+    chmod +x pixelserv-tls-armhf && \
+    mv pixelserv-tls-armhf /usr/local/bin/
+
+VOLUME ["/ssl"]
+
+EXPOSE $HTTP_PORT
+EXPOSE $HTTPS_PORT
+
+CMD ["pixelserv-tls", "-p", "$HTTP_PORT", "-c", "$CERT_DIR"]

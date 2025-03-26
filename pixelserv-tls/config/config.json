@@ -1,0 +1,35 @@
+{
+    "name": "PixelServ-TLS",
+    "version": "1.0.0",
+    "description": "A lightweight TLS proxy server optimized for serving pixel GIFs",
+    "arch": ["armhf"],
+    "maintainer": "Bluscream <blu@minopia.de>",
+    "requirements": [
+      {
+        "architecture": "armhf",
+        "url": "Dockerfiles/Dockerfile.armhf"
+      }
+    ],
+    "options": {
+      "log_level": {
+        "default": "info",
+        "example": "debug",
+        "description": "Logging verbosity"
+      },
+      "http_port": {
+        "default": 80,
+        "example": 80,
+        "description": "HTTP Port number to listen on"
+      },
+      "https_port": {
+        "default": 443,
+        "example": 443,
+        "description": "HTTPS Port number to listen on"
+      },
+      "cert_dir": {
+        "default": "/ssl",
+        "example": "/custom/certs",
+        "description": "Directory for SSL certificates"
+      }
+    }
+  }
